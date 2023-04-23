@@ -1,12 +1,8 @@
 import { Sequelize } from 'sequelize';
+import { config } from './getConfig';
 
-const config = {
-  DB_Name: process.env.DB_NAME || 'name',
-  DB_USER: process.env.DB_USER || 'user',
-  DB_PASS: process.env.DB_PASS || 'pass',
-};
 const sequelize = new Sequelize(
-  config.DB_Name,
+  config.DB_NAME,
   config.DB_USER,
   config.DB_PASS,
   {

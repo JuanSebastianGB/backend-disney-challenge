@@ -4,8 +4,10 @@ import { readdirSync } from 'fs';
 const router = Router();
 
 const CURRENT_DIR = `${__dirname}`;
-const cleanFileName = (filename: string) => {
-  const cleanFile = filename.split('.').shift();
+export const cleanFileName = (filename?: string) => {
+  if (typeof filename !== 'string')
+    throw new Error('Filename must be a string');
+  const [cleanFile] = filename?.split?.('.');
   return cleanFile;
 };
 

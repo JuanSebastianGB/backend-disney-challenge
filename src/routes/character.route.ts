@@ -5,7 +5,7 @@ import {
   getAllItems,
   getOneItem,
   updateItem,
-} from '../controllers/movie.controller';
+} from '../controllers/character.controller';
 
 const router = Router();
 router.get('/:id', getOneItem);

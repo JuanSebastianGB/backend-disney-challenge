@@ -3,14 +3,9 @@ import { sequelize } from '../config/database';
 import { Character } from '../interfaces/Character';
 
 const { DataTypes } = Sequelize;
-interface CharacterInstance extends Model<Character> {}
+export interface CharacterInstance extends Model<Character> {}
 
 const CharacterModel = sequelize.define<CharacterInstance>('characters', {
-  id: {
-    type: DataTypes.INTEGER,
-    autoIncrement: true,
-    primaryKey: true,
-  },
   name: {
     type: DataTypes.STRING,
     allowNull: false,

@@ -1,28 +1,24 @@
 import { DataTypes, Model } from 'sequelize';
 import { sequelize } from '../config/database';
 import { Movie } from '../interfaces/Movie';
+import CharacterModel from './Character.model';
 
-interface MovieInstance extends Model<Movie> {}
+interface MovieInstance extends Model<Movie>, Movie {}
 
 const MovieModel = sequelize.define<MovieInstance>('movies', {
-  id: {
-    type: DataTypes.INTEGER,
-    autoIncrement: true,
-    primaryKey: true,
-  },
   title: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  image: {
+  image_url: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  creation_date: {
+  release_date: {
     type: DataTypes.DATE,
     allowNull: false,
   },
-  qualification: {
+  rating: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
@@ -32,4 +28,6 @@ const MovieModel = sequelize.define<MovieInstance>('movies', {
   },
 });
 
+MovieModel.belongsToMany(CharacterModel, { through: 'character_movie' });
+CharacterModel.belongsToMany(MovieModel, { through: 'character_movie' });
 export default MovieModel;
